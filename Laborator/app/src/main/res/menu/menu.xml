@@ -6,7 +6,10 @@
         android:title="Profile"
         android:icon="@drawable/ic_person_black_24dp"
         app:showAsAction="never"
-
+        />
+    <item android:id="@+id/Notes"
+        android:title="Notes"
+        app:showAsAction="never"
         />
     <item android:id="@+id/Cart"
         android:title="Cart"
@@ -20,6 +23,22 @@
                 />
             <item android:id="@+id/EmptyCart"
                 android:title="EmptyCart"
+                app:showAsAction="never"
+                />
+        </menu>
+    </item>
+    <item android:id="@+id/Settings"
+        android:title="Settings"
+
+        app:showAsAction="never">
+
+        <menu>
+            <item android:id="@+id/SettingsManual"
+                android:title="Manual"
+                app:showAsAction="never"
+                />
+            <item android:id="@+id/SettingAuto"
+                android:title="Auto"
                 app:showAsAction="never"
                 />
         </menu>

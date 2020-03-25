@@ -111,8 +111,17 @@ public class MainActivity extends AppCompatActivity {
             case R.id.Profile:
                 Toast.makeText(this,"Profile option Selected",Toast.LENGTH_SHORT).show();
                 return true;
+            case R.id.Notes:
+                goToNotes();
+                return true;
             case R.id.Exit:
                 Toast.makeText(this,"Exit option Selected",Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.SettingAuto:
+                goToSettingsAuto();
+                return true;
+            case R.id.SettingsManual:
+                goToSettingManual();
                 return true;
             case R.id.Cart:
                 Toast.makeText(this,"Cart option Selected",Toast.LENGTH_SHORT).show();
@@ -136,6 +145,24 @@ public class MainActivity extends AppCompatActivity {
     public void goToMenu()
     {
         Intent intent = new Intent(this, MenuActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToNotes()
+    {
+        Intent intent = new Intent(this, NotesActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToSettingsAuto()
+    {
+        Intent intent = new Intent(this, PreferancesActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToSettingManual()
+    {
+        Intent intent = new Intent(this, ManualSettingsActivity.class);
         startActivity(intent);
     }
 
