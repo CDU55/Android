@@ -43,4 +43,16 @@ public class MenuActivity extends AppCompatActivity {
         DialogFragment newFragnemnt=new Login();
         newFragnemnt.show(getSupportFragmentManager(),"Login");
     }
+
+    public void goToSensor(View view)
+    {
+        Intent intent = new Intent(this, SensorsActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToLocation(View view)
+    {
+        Intent intent = new Intent(this, CoordinatesActivity.class);
+        startActivity(intent);
+    }
 }

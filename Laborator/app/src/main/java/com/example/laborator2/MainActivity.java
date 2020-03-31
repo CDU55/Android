@@ -2,11 +2,11 @@ package com.example.laborator2;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
-
-import java.util.ArrayList;
-
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -24,6 +24,8 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private final static String Tag="MainActivity";
+    private static final int FINE_LOCATION_PERMISSION =10 ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
                 t.setText(p.productName+ " : "+String.valueOf(p.productPrice));
             }
         });
+        askPermissions();
     }
     protected void onStart()
     {
@@ -165,6 +168,15 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ManualSettingsActivity.class);
         startActivity(intent);
     }
-
+    private void askPermissions() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED) {
+        } else {
+            // Permission to access the location is missing. Show rationale and request permission
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                    FINE_LOCATION_PERMISSION);
+        }
+    }
 
 }
