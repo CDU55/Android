@@ -25,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
 
     private final static String Tag="MainActivity";
     private static final int FINE_LOCATION_PERMISSION =10 ;
+    private static final int CAMERA_PERMISSION=11;
+    private static final int STORAGE_PERMISSION=12;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +51,9 @@ public class MainActivity extends AppCompatActivity {
                 t.setText(p.productName+ " : "+String.valueOf(p.productPrice));
             }
         });
-        askPermissions();
+        askLocaitonPermissions();
+        askCameraPermissions();
+        askStoragePermissions();
     }
     protected void onStart()
     {
@@ -168,14 +172,61 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ManualSettingsActivity.class);
         startActivity(intent);
     }
-    private void askPermissions() {
+    private void askLocaitonPermissions() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-                == PackageManager.PERMISSION_GRANTED) {
-        } else {
-            // Permission to access the location is missing. Show rationale and request permission
-            ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-                    FINE_LOCATION_PERMISSION);
+                != PackageManager.PERMISSION_GRANTED) {
+
+            if(ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.ACCESS_FINE_LOCATION))
+            {
+
+            }
+            else {
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                        FINE_LOCATION_PERMISSION);
+            }
+
+
+        }
+
+
+
+
+    }
+    private void askCameraPermissions()
+    {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            if(ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.CAMERA))
+            {
+
+            }
+            else {
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.CAMERA},
+                        CAMERA_PERMISSION);
+            }
+
+
+        }
+    }
+
+    private void askStoragePermissions()
+    {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            if(ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.WRITE_EXTERNAL_STORAGE))
+            {
+
+            }
+            else {
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                        STORAGE_PERMISSION);
+            }
+
         }
     }
 

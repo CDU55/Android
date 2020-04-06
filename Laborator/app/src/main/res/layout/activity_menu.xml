@@ -58,6 +58,13 @@
             android:onClick="goToLocation"/>
 
         <Button
+            android:id="@+id/camera"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Camera"
+            android:onClick="goToCamera"/>
+
+        <Button
             android:id="@+id/Back"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

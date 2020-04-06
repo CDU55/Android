@@ -20,9 +20,7 @@ import java.util.List;
 public class SensorsActivity extends AppCompatActivity implements SensorEventListener {
     @Override
     public void onSensorChanged(SensorEvent event) {
-
-        sensorValues.put(event.sensor.getName(),String.valueOf(event.values[0]));
-        this.manager.unregisterListener(this,event.sensor);
+       this.manager.unregisterListener(this,event.sensor);
         String values=new String();
         for (float value:event.values)
         {
@@ -41,7 +39,6 @@ public class SensorsActivity extends AppCompatActivity implements SensorEventLis
     private TextView sensorInformation;
     private SensorManager manager;
     private List<Sensor> sensors;
-    private HashMap<String,String> sensorValues=new HashMap<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

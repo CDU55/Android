@@ -55,4 +55,9 @@ public class MenuActivity extends AppCompatActivity {
         Intent intent = new Intent(this, CoordinatesActivity.class);
         startActivity(intent);
     }
+    public void goToCamera(View view)
+    {
+        Intent intent = new Intent(this, CameraActivity.class);
+        startActivity(intent);
+    }
 }
